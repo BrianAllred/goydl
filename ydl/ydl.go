@@ -51,8 +51,12 @@ func NewYoutubeDl() youtubeDl {
 	return youtubeDl{YoutubeDlPath: "youtube-dl", Info: Info{}, Options: NewOptions(), cmd: new(exec.Cmd)}
 }
 
-// Downloads either the given url or the youtubeDl.VideoUrl from youtube
+// Download will download either the given url or the youtubeDl.VideoUrl from youtube
 func (ydl *youtubeDl) Download(urls ...string) (*exec.Cmd, error) {
+	if ydl.Options.Update.Value {
+		return ydl.Update()
+	}
+
 	if len(urls) > 1 {
 		return nil, errors.New("invalid argument")
 	}
@@ -88,7 +92,7 @@ func (ydl *youtubeDl) Download(urls ...string) (*exec.Cmd, error) {
 	return ydl.cmd, ydl.cmd.Start()
 }
 
-// Gets the info of a particular video or playlist
+// GetInfo gets the info of a particular video or playlist
 func (ydl *youtubeDl) GetInfo() (Info, error) {
 	// Setup command with '-J' argument
 	cmd := exec.Command(ydl.YoutubeDlPath, "-J", ydl.VideoURL)
@@ -107,4 +111,23 @@ func (ydl *youtubeDl) GetInfo() (Info, error) {
 	}
 
 	return ydl.Info, cmd.Wait()
+}
+
+// Update updates the youtube-dl binary
+func (ydl *youtubeDl) Update() (*exec.Cmd, error) {
+	ydl.cmd = exec.Command(ydl.YoutubeDlPath, "-U")
+
+	ydl.Stderr, ydl.Err = ydl.cmd.StderrPipe()
+
+	if ydl.Err != nil {
+		log.Fatal(ydl.Err)
+	}
+
+	ydl.Stdout, ydl.Err = ydl.cmd.StdoutPipe()
+
+	if ydl.Err != nil {
+		log.Fatal(ydl.Err)
+	}
+
+	return ydl.cmd, ydl.cmd.Start()
 }
