@@ -1,18 +1,17 @@
 machine:
-  environment:
-    IMPORT_PATH: "github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
+  post:
+    - mkdir -p $GOPATH/src/github.com/BrianAllred/goydl
+
+general:
+  build_dir: ../.go_workspace/src/github.com/BrianAllred/goydl
 
 dependencies:
   pre:
     - go get github.com/tools/godep
 
-  override:
-    - mkdir -p "$GOPATH/src/$IMPORT_PATH"
-    - rsync -azC --delete ./ "$GOPATH/src/$IMPORT_PATH/"
-
 test:
   pre:
-    - go vet ./...
+    - go vet
 
   override:
-    - godep go test ./...
+    - godep go test
