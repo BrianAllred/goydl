@@ -24,7 +24,7 @@
  * SOFTWARE.
  */
 
-package ydl
+package goydl
 
 import (
 	"encoding/json"

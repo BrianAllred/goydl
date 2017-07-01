@@ -24,7 +24,7 @@
  * SOFTWARE.
  */
 
-package ydl
+package goydl
 
 // Info is an object representing the JSON returned from a -J download (dump-single-json)
 type Info struct {

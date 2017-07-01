@@ -7,14 +7,14 @@ A simple youtube-dl library for go.
 See the [main page](https://rg3.github.io/youtube-dl/) for youtube-dl for more information.
 
 ### Get the package
-`go get github.com/BrianAllred/goydl/ydl`
+`go get github.com/BrianAllred/goydl`
 
 ### Use the code
 See the [documentation](https://github.com/rg3/youtube-dl/blob/master/README.md#readme) for youtube-dl first to understand what it does and how it does it.
 
 1. Create a new youtubeDl client:
 
-        youtubeDl := ydl.NewYoutubeDl()
+        youtubeDl := goydl.NewYoutubeDl()
 
 2. The Options object contains the various youtube-dl download parameters:
 

@@ -1,5 +1,5 @@
 {
-	"ImportPath": "github.com/BrianAllred/goydl/ydl",
+	"ImportPath": "github.com/BrianAllred/goydl",
 	"GoVersion": "go1.8",
 	"GodepVersion": "v79",
 	"Deps": []
