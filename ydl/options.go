@@ -416,7 +416,7 @@ func (opts *options) OptionsToCliParameters() string {
 
 	for i := 0; i < optReflect.NumField(); i++ {
 		option := optReflect.Field(i).Interface().(Option)
-		buffer.WriteString(option.String() + " ")
+		buffer.WriteString(option.OptionString() + " ")
 	}
 
 	output := strings.Join(strings.Fields(buffer.String()), " ")

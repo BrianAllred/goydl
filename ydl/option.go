@@ -36,7 +36,7 @@ import (
 // Option interface represents a CLI parameter that can be passed to youtube-dl
 // The String method returns what would be passed to youtube-dl
 type Option interface {
-	String() string
+	OptionString() string
 }
 
 type UintOption struct {
@@ -81,7 +81,7 @@ type StringArrayOption struct {
 	Values []string
 }
 
-func (stringArrOpt StringArrayOption) String() string {
+func (stringArrOpt StringArrayOption) OptionString() string {
 	var buffer bytes.Buffer
 
 	if len(stringArrOpt.Values) > 0 {
@@ -93,7 +93,7 @@ func (stringArrOpt StringArrayOption) String() string {
 	return buffer.String()
 }
 
-func (uintOpt UintOption) String() string {
+func (uintOpt UintOption) OptionString() string {
 	if uintOpt.Value != uintOpt.defaultValue {
 		return uintOpt.param + " " + strconv.FormatUint(uint64(uintOpt.Value), 10)
 	}
@@ -101,7 +101,7 @@ func (uintOpt UintOption) String() string {
 	return ""
 }
 
-func (stringOpt StringOption) String() string {
+func (stringOpt StringOption) OptionString() string {
 	if stringOpt.Value != "" {
 		return stringOpt.param + " " + stringOpt.Value
 	}
@@ -109,7 +109,7 @@ func (stringOpt StringOption) String() string {
 	return ""
 }
 
-func (ipOpt IpOption) String() string {
+func (ipOpt IpOption) OptionString() string {
 	if ipOpt.Value != nil {
 		return ipOpt.param + " " + ipOpt.Value.String()
 	}
@@ -117,15 +117,15 @@ func (ipOpt IpOption) String() string {
 	return ""
 }
 
-func (fsrOpt FileSizeRateOption) String() string {
+func (fsrOpt FileSizeRateOption) OptionString() string {
 	if !fsrOpt.Value.IsNil() {
-		return fsrOpt.param + " " + fsrOpt.String()
+		return fsrOpt.param + " " + fsrOpt.Value.String()
 	}
 
 	return ""
 }
 
-func (timeOpt TimeOption) String() string {
+func (timeOpt TimeOption) OptionString() string {
 	if !timeOpt.Value.IsZero() {
 		// youtube-dl date format is YYYYMMDD
 		return timeOpt.param + " " + timeOpt.Value.Format("20060102")
@@ -134,7 +134,7 @@ func (timeOpt TimeOption) String() string {
 	return ""
 }
 
-func (boolOpt BoolOption) String() string {
+func (boolOpt BoolOption) OptionString() string {
 	if boolOpt.Value != boolOpt.defaultValue {
 		return boolOpt.param
 	}
@@ -142,7 +142,7 @@ func (boolOpt BoolOption) String() string {
 	return ""
 }
 
-func (intOpt IntOption) String() string {
+func (intOpt IntOption) OptionString() string {
 	if intOpt.Value != intOpt.defaultValue {
 		// For IntOptions, negative values represent "infinite"
 		if intOpt.Value < 0 {
