@@ -2,7 +2,7 @@
 
 A simple youtube-dl library for go.
 
-[![CircleCI](https://circleci.com/gh/BrianAllred/NYoutubeDL.svg?style=svg)](https://circleci.com/gh/BrianAllred/NYoutubeDL) [![Go Report Card](https://goreportcard.com/badge/github.com/brianallred/goydl)](https://goreportcard.com/report/github.com/brianallred/goydl) 
+[![CircleCI](https://circleci.com/gh/BrianAllred/NYoutubeDL.svg?style=svg)](https://circleci.com/gh/BrianAllred/NYoutubeDL) [![Go Report Card](https://goreportcard.com/badge/github.com/brianallred/goydl)](https://goreportcard.com/report/github.com/brianallred/goydl) [![Sourcegraph](https://sourcegraph.com/github.com/BrianAllred/goydl/-/badge.svg)](https://sourcegraph.com/github.com/BrianAllred/goydl?badge)
 
 See the [main page](https://rg3.github.io/youtube-dl/) for youtube-dl for more information.
 
