@@ -30,7 +30,6 @@ import (
 	"encoding/json"
 	"errors"
 	"io"
-	"log"
 	"os/exec"
 	"strings"
 )
@@ -67,7 +66,7 @@ func (ydl *youtubeDl) Download(urls ...string) (*exec.Cmd, error) {
 
 	// Get the info first
 	if _, err := ydl.GetInfo(); err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 
 	ydl.cmd = exec.Command(ydl.YoutubeDlPath, ydl.VideoURL)
@@ -78,14 +77,14 @@ func (ydl *youtubeDl) Download(urls ...string) (*exec.Cmd, error) {
 	ydl.Stderr, ydl.Err = ydl.cmd.StderrPipe()
 
 	if ydl.Err != nil {
-		log.Fatal(ydl.Err)
+		return nil, ydl.Err
 	}
 
 	// Setup stdout pipe
 	ydl.Stdout, ydl.Err = ydl.cmd.StdoutPipe()
 
 	if ydl.Err != nil {
-		log.Fatal(ydl.Err)
+		return nil, ydl.Err
 	}
 
 	// Return the command and any error from starting the command
@@ -99,15 +98,15 @@ func (ydl *youtubeDl) GetInfo() (Info, error) {
 	stdOut, err := cmd.StdoutPipe()
 
 	if err != nil {
-		log.Fatal(err)
+		return Info{}, err
 	}
 
 	if err := cmd.Start(); err != nil {
-		log.Fatal(err)
+		return Info{}, err
 	}
 
 	if err := json.NewDecoder(stdOut).Decode(&ydl.Info); err != nil {
-		log.Fatal(err)
+		return Info{}, err
 	}
 
 	return ydl.Info, cmd.Wait()
@@ -120,13 +119,13 @@ func (ydl *youtubeDl) Update() (*exec.Cmd, error) {
 	ydl.Stderr, ydl.Err = ydl.cmd.StderrPipe()
 
 	if ydl.Err != nil {
-		log.Fatal(ydl.Err)
+		return nil, ydl.Err
 	}
 
 	ydl.Stdout, ydl.Err = ydl.cmd.StdoutPipe()
 
 	if ydl.Err != nil {
-		log.Fatal(ydl.Err)
+		return nil, ydl.Err
 	}
 
 	return ydl.cmd, ydl.cmd.Start()
