@@ -106,6 +106,9 @@ func (ydl *youtubeDl) GetInfo() (Info, error) {
 	}
 
 	if err := json.NewDecoder(stdOut).Decode(&ydl.Info); err != nil {
+		// We need to wait for the command to exit, so we don't end up creating
+		// defunct processes.
+		_ = cmd.Wait()
 		return Info{}, err
 	}
 
