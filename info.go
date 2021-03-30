@@ -58,7 +58,7 @@ type Info struct {
 		Ext         string      `json:"ext"`
 		FormatNote  string      `json:"format_note"`
 		Acodec      string      `json:"acodec"`
-		Abr         int         `json:"abr,omitempty"`
+		Abr         float32         `json:"abr,omitempty"`
 		Container   string      `json:"container,omitempty"`
 		FormatID    string      `json:"format_id"`
 		URL         string      `json:"url"`
@@ -125,7 +125,7 @@ type Info struct {
 			AcceptLanguage string `json:"Accept-Language"`
 		} `json:"http_headers"`
 		PlayerURL string `json:"player_url,omitempty"`
-		Abr       int    `json:"abr,omitempty"`
+		Abr       float32    `json:"abr,omitempty"`
 	} `json:"requested_formats"`
 	Format         string      `json:"format"`
 	FormatID       string      `json:"format_id"`
@@ -137,7 +137,7 @@ type Info struct {
 	Vbr            interface{} `json:"vbr"`
 	StretchedRatio interface{} `json:"stretched_ratio"`
 	Acodec         string      `json:"acodec"`
-	Abr            int         `json:"abr"`
+	Abr            float32         `json:"abr"`
 	Ext            string      `json:"ext"`
 	Fulltitle      string      `json:"fulltitle"`
 	Filename       string      `json:"_filename"`
