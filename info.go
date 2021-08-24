@@ -111,7 +111,7 @@ type Info struct {
 		Width       int         `json:"width,omitempty"`
 		Tbr         float64     `json:"tbr"`
 		Asr         interface{} `json:"asr,omitempty"`
-		Fps         int         `json:"fps,omitempty"`
+		Fps         float32     `json:"fps,omitempty"`
 		Language    interface{} `json:"language,omitempty"`
 		Filesize    int         `json:"filesize"`
 		Acodec      string      `json:"acodec"`
@@ -132,7 +132,7 @@ type Info struct {
 	Width          int         `json:"width"`
 	Height         int         `json:"height"`
 	Resolution     interface{} `json:"resolution"`
-	Fps            int         `json:"fps"`
+	Fps            float32     `json:"fps"`
 	Vcodec         string      `json:"vcodec"`
 	Vbr            interface{} `json:"vbr"`
 	StretchedRatio interface{} `json:"stretched_ratio"`
