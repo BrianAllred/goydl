@@ -58,7 +58,7 @@ type Info struct {
 		Ext         string      `json:"ext"`
 		FormatNote  string      `json:"format_note"`
 		Acodec      string      `json:"acodec"`
-		Abr         int         `json:"abr,omitempty"`
+		Abr         float32     `json:"abr,omitempty"`
 		Container   string      `json:"container,omitempty"`
 		FormatID    string      `json:"format_id"`
 		URL         string      `json:"url"`
@@ -124,8 +124,8 @@ type Info struct {
 			AcceptEncoding string `json:"Accept-Encoding"`
 			AcceptLanguage string `json:"Accept-Language"`
 		} `json:"http_headers"`
-		PlayerURL string `json:"player_url,omitempty"`
-		Abr       int    `json:"abr,omitempty"`
+		PlayerURL string        `json:"player_url,omitempty"`
+		Abr       float32       `json:"abr,omitempty"`
 	} `json:"requested_formats"`
 	Format         string      `json:"format"`
 	FormatID       string      `json:"format_id"`
