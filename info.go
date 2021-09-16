@@ -58,7 +58,7 @@ type Info struct {
 		Ext         string      `json:"ext"`
 		FormatNote  string      `json:"format_note"`
 		Acodec      string      `json:"acodec"`
-		Abr         float32     `json:"abr,omitempty"`
+		Abr         float64     `json:"abr,omitempty"`
 		Container   string      `json:"container,omitempty"`
 		FormatID    string      `json:"format_id"`
 		URL         string      `json:"url"`
@@ -111,7 +111,7 @@ type Info struct {
 		Width       int         `json:"width,omitempty"`
 		Tbr         float64     `json:"tbr"`
 		Asr         interface{} `json:"asr,omitempty"`
-		Fps         float32     `json:"fps,omitempty"`
+		Fps         float64     `json:"fps,omitempty"`
 		Language    interface{} `json:"language,omitempty"`
 		Filesize    int         `json:"filesize"`
 		Acodec      string      `json:"acodec"`
@@ -125,19 +125,19 @@ type Info struct {
 			AcceptLanguage string `json:"Accept-Language"`
 		} `json:"http_headers"`
 		PlayerURL string        `json:"player_url,omitempty"`
-		Abr       float32       `json:"abr,omitempty"`
+		Abr       float64       `json:"abr,omitempty"`
 	} `json:"requested_formats"`
 	Format         string      `json:"format"`
 	FormatID       string      `json:"format_id"`
 	Width          int         `json:"width"`
 	Height         int         `json:"height"`
 	Resolution     interface{} `json:"resolution"`
-	Fps            float32     `json:"fps"`
+	Fps            float64     `json:"fps"`
 	Vcodec         string      `json:"vcodec"`
 	Vbr            interface{} `json:"vbr"`
 	StretchedRatio interface{} `json:"stretched_ratio"`
 	Acodec         string      `json:"acodec"`
-	Abr            int         `json:"abr"`
+	Abr            float64     `json:"abr"`
 	Ext            string      `json:"ext"`
 	Fulltitle      string      `json:"fulltitle"`
 	Filename       string      `json:"_filename"`
